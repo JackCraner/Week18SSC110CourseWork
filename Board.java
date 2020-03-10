@@ -4,13 +4,14 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
-import java.awt.event.*;
 public class Board
 {
-    private static int numWater = 1;
-    private static int numLily = 2;
-    private static int numGreenFrog = 3;
-    private static int numRedFrog = 4;
+    public static int numWater = 0;
+    public static int numLily = 1;
+    public static int numGreenFrog = 2;
+    public static int numRedFrog = 3;
+    public static int numGreenFrog2 = 4;
+    public static int numRedFrog2 = 5;
 
     public Board(int x, int y)
     {

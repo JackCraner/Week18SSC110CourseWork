@@ -1,10 +1,4 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import java.awt.GridLayout;
-import java.awt.event.*;
+
 public class Level
 {
     private int[][] boardLayout = new int[5][5];
@@ -18,14 +12,14 @@ public class Level
                 {
                     if ((a%2) == 0)
                     {
-                        boardLayout[i][a] = 2;
+                        boardLayout[i][a] = Board.numLily;
                     }
                 }
                 else
                 {
                     if (!((a%2) ==0))
                     {
-                        boardLayout[i][a] = 2;
+                        boardLayout[i][a] = Board.numLily;
                     }
                 } 
             }
@@ -40,12 +34,12 @@ public class Level
         boardLayout = newLevel.getLevel();
         if (x == 1)
         {
-            boardLayout[0][0] = 3;
-            boardLayout[0][2] = 4;
-            boardLayout[0][4] = 3;
-            boardLayout[2][2] = 3;
-            boardLayout[3][1] = 3;
-            boardLayout[3][3] = 3;
+            boardLayout[0][0] = Board.numGreenFrog;
+            boardLayout[0][2] = Board.numRedFrog;
+            boardLayout[0][4] = Board.numGreenFrog;
+            boardLayout[2][2] = Board.numGreenFrog;
+            boardLayout[3][1] = Board.numGreenFrog;
+            boardLayout[3][3] = Board.numGreenFrog;
         }
 
 
