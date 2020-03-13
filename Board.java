@@ -13,6 +13,9 @@ public class Board
     public static int numGreenFrog2 = 4;
     public static int numRedFrog2 = 5;
 
+    Square arrayOfSquares[][] = new Square[5][5];
+    
+    SquareListener squareChecker;
     public Board(int x, int y)
     {
         JFrame gamemap = new JFrame();
@@ -24,18 +27,24 @@ public class Board
         GridLayout newLayout = new GridLayout(5,5);
         gamemap.setLayout(newLayout);
 
-        Square arrayOfSquares[][] = new Square[5][5];
         Level newLevel = new Level(1);
         int[][] boardLayout = newLevel.getLevel();
         for (int i = 4; i >=0;i--)
         {
             for (int a =0; a < 5; a++)
             {
-                arrayOfSquares[i][a] = new Square(gamemap,boardLayout[i][a],i,a);
+                arrayOfSquares[i][a] = new Square(this,gamemap,boardLayout[i][a],i,a);
             }
         }
+        squareChecker = new SquareListener(arrayOfSquares);
         gamemap.setVisible(true);
  
+    }
+
+    public void squareClick(int x, int y, int objectNum)
+    {   
+       squareChecker.slSelectSquare(x,y);
+        
     }
 
 
