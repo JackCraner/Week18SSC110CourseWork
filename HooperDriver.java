@@ -4,7 +4,7 @@ public class HooperDriver
 {
     public static void main(String[] args)
     {
-    Board map = new Board(750,750);
+        Board map = new Board(750,750);
 
     }
 

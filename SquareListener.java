@@ -27,51 +27,41 @@ public class SquareListener
             cXCord = x;
             cYCord = y;
         }
-        else if (((arrayOfSquares[x][y].getPiece()<=1)&&(cXCord>-1)))
+        else if (((arrayOfSquares[x][y].getPiece()==1)&&(cXCord>-1)))
         {
-            if (checkMove(x,y) ==1)
+            int middleX = ((x +cXCord)/2);
+            int middleY = ((y+cYCord)/2);
+            if (checkMove(middleX,middleY) ==1)
             {
             arrayOfSquares[x][y].moveTo(arrayOfSquares[cXCord][cYCord]);
-            cYCord = -1;
-                
+            removeFrog(middleX,middleY);
+            cYCord = -1;      
             cXCord = -1;
+            }
+            else
+            {
+                failedMove();
             }
         }
     }
     public int checkMove(int x, int y)
     {
-        //diagonal 
-        int a;
-        int b;
-        if (x>cXCord)
+        if (arrayOfSquares[x][y].getPiece() == Board.numGreenFrog||arrayOfSquares[x][y].getPiece() == Board.numRedFrog)
         {
-            a = 1;
-        }
-        else 
-        {
-            a = -1;
-        }
-        if (x>cYCord)
-        {
-            b = 1;
-        }
-        else 
-        {
-            b =-1;
-        }
-
-        if (arrayOfSquares[cXCord+a][cYCord+b].getPiece() == Board.numGreenFrog)
-        {
-            if (arrayOfSquares[x][y].getPiece() == Board.numLily)
-            {
-                return 1;
-            }
+            return 1;
         }
         return 0;
+
     }
-    public failedMove()
+    public void failedMove()
     {
-        
+        arrayOfSquares[cXCord][cYCord].selectSquare();
+        cXCord = -1;
+        cYCord = -1;
+    }
+    public void removeFrog(int x, int y)
+    {
+        arrayOfSquares[x][y].updateSquare(1, arrayOfSquares[x][y]);
     }
 
     

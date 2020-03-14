@@ -14,11 +14,11 @@ public class Board
     public static int numRedFrog2 = 5;
 
     Square arrayOfSquares[][] = new Square[5][5];
-    
+    JFrame gamemap = new JFrame();
     SquareListener squareChecker;
     public Board(int x, int y)
     {
-        JFrame gamemap = new JFrame();
+        
         gamemap.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         gamemap.setSize(x,y);
@@ -44,9 +44,50 @@ public class Board
     public void squareClick(int x, int y, int objectNum)
     {   
        squareChecker.slSelectSquare(x,y);
-        
+       if (checkWin() == 1)
+       {
+            System.out.println("Finished");   
+            EndScreen winDisplay = new EndScreen(100, 100, this,1);
+       }
+       else if (checkWin() == 2)
+       {
+            System.out.println("You Lost"); 
+            EndScreen winDisplay = new EndScreen(100, 100, this,2); 
+           
+       }
     }
 
-
+    public int checkWin()
+    {
+        boolean won = true;
+        boolean lost = true;
+        for (int a=0;a<5;a++)
+        {
+            for (int b=0;b<5;b++)
+            {
+                if (arrayOfSquares[a][b].getPiece() == numGreenFrog|| arrayOfSquares[a][b].getPiece() == numGreenFrog2)
+                {
+                    won = false;
+                }
+                if (arrayOfSquares[a][b].getPiece() == numRedFrog||arrayOfSquares[a][b].getPiece() == numRedFrog2)
+                {
+                    lost = false;
+                }
+            }
+        }
+        if (lost)
+        {
+            return 2;
+        }
+        if (won)
+        {
+            return 1;
+        }
+        return 0;
+    }
+    public void closeBoard()
+    {
+        gamemap.dispose();
+    }
 
 }
