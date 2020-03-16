@@ -4,7 +4,7 @@ public class HooperDriver
 {
     public static void main(String[] args)
     {
-        OpenScreen screen = new OpenScreen(400, 400);
+        OpenScreen screen = new OpenScreen(800, 400);
 
     }
 

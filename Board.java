@@ -48,12 +48,12 @@ public class Board
        if (checkWin() == 1)
        {
             System.out.println("Finished");   
-            OpenScreen winDisplay = new OpenScreen(400, 150, this,1);
+            OpenScreen winDisplay = new OpenScreen(400, 300, this,1);
        }
        else if (checkWin() == 2)
        {
             System.out.println("You Lost"); 
-            OpenScreen loseDisplay = new OpenScreen(400, 150, this,2); 
+            OpenScreen loseDisplay = new OpenScreen(400, 300, this,2); 
            
        }
     }
