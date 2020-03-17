@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Level
 {
@@ -32,48 +35,27 @@ public class Level
     {
         Level newLevel = new Level();
         boardLayout = newLevel.getLevel();
-        if (x == 1)
+        try
         {
-            boardLayout[4][0] = Board.numRedFrog;
-            boardLayout[3][1] = Board.numGreenFrog;
+        File levelList = new File("LevelList.txt");
+        Scanner levelReader = new Scanner(levelList);
+        int lineCounter = 1;
+        while (levelReader.hasNextLine())
+        {
+            String levelData[] = levelReader.nextLine().split(",");
+            if (lineCounter == x)
+            {
+                for (int i = 0; i<levelData.length;i++)
+                {
+                    boardLayout[Character.getNumericValue(levelData[i].charAt(0))][Character.getNumericValue(levelData[i].charAt(1))] = Character.getNumericValue(levelData[i].charAt(2));
+                }
+                
+            }
+            lineCounter++;
         }
-        if (x == 2)
+        } catch (FileNotFoundException e)
         {
-            boardLayout[4][4] = Board.numRedFrog;
-            boardLayout[2][4] = Board.numGreenFrog;
-        }
-        if (x == 3)
-        {
-            boardLayout[2][2] = Board.numRedFrog;
-            boardLayout[3][3] = Board.numGreenFrog;
-        }
-        if (x ==4)
-        {
-            boardLayout[4][0] = Board.numRedFrog;
-            boardLayout[1][3] = Board.numGreenFrog;
-            boardLayout[3][1] = Board.numGreenFrog;
-        }
-        if ( x == 5)
-        {
-            boardLayout[0][0] = Board.numRedFrog;
-            boardLayout[2][0] = Board.numGreenFrog;
-            boardLayout[4][2] = Board.numGreenFrog;
-        }
-        if (x ==6 )
-        {
-            boardLayout[2][4] = Board.numRedFrog;
-            boardLayout[1][1] = Board.numGreenFrog;
-            boardLayout[1][3] = Board.numGreenFrog;
-            boardLayout[2][2] = Board.numGreenFrog;
-        }
-        if (x == 40)
-        {
-            boardLayout[0][0] = Board.numGreenFrog;
-            boardLayout[0][2] = Board.numRedFrog;
-            boardLayout[0][4] = Board.numGreenFrog;
-            boardLayout[2][2] = Board.numGreenFrog;
-            boardLayout[3][1] = Board.numGreenFrog;
-            boardLayout[3][3] = Board.numGreenFrog;
+            System.out.println("Error");
         }
 
 

@@ -11,9 +11,9 @@ public class Square implements ActionListener
     private int objectNum;
     JButton b1 = new JButton();
     Pictures picLoader = new Pictures();
-    JFrame playingBoard;
+    JPanel playingBoard;
     Board boardArena;
-    public Square(Board boardMap, JFrame map, int oNum,int x,int y)
+    public Square(Board boardMap, JPanel map, int oNum,int x,int y)
     {
         b1.addActionListener(this);
         picLoader.setPicture(this,b1,oNum);

@@ -4,7 +4,8 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
-public class Board
+import java.awt.event.*;
+public class Board implements ActionListener
 {
     public static int numWater = 0;
     public static int numLily = 1;
@@ -15,7 +16,12 @@ public class Board
 
     Square arrayOfSquares[][] = new Square[5][5];
     JFrame gamemap = new JFrame();
+    JPanel buttonHolder = new JPanel();
     SquareListener squareChecker;
+
+    JButton exit;
+    JButton save;
+    JButton undo;
 
     public Board(int x, int y, int a)
     {
@@ -25,8 +31,7 @@ public class Board
         gamemap.setSize(x,y);
         gamemap.setTitle("Hooper Game");
 
-        GridLayout newLayout = new GridLayout(5,5);
-        gamemap.setLayout(newLayout);
+        
 
         Level newLevel = new Level(a);
         int[][] boardLayout = newLevel.getLevel();
@@ -34,10 +39,23 @@ public class Board
         {
             for (int c =0; c < 5; c++)
             {
-                arrayOfSquares[i][c] = new Square(this,gamemap,boardLayout[i][c],i,c);
+                arrayOfSquares[i][c] = new Square(this,buttonHolder,boardLayout[i][c],i,c);
             }
         }
+        GridLayout newLayout = new GridLayout(5,5);
+        buttonHolder.setLayout(newLayout);
         squareChecker = new SquareListener(arrayOfSquares);
+        JPanel optionHolder = new JPanel();
+        exit = new JButton("Exit");
+        undo = new JButton("Undo");
+        save = new JButton("Save");
+        GridLayout newLayout2 = new GridLayout(3,1);
+        optionHolder.add(undo);
+        optionHolder.add(save);
+        optionHolder.add(exit);
+        optionHolder.setLayout(newLayout2);
+        gamemap.add(buttonHolder, BorderLayout.CENTER);
+        gamemap.add(optionHolder, BorderLayout.EAST);
         gamemap.setVisible(true);
  
     }
@@ -89,6 +107,18 @@ public class Board
     public void closeBoard()
     {
         gamemap.dispose();
+    }
+
+    public void actionPerformed(ActionEvent e) 
+    {
+        if (e.getSource() == exit)
+        {
+            gamemap.dispose();
+        }        
+        if (e.getSource() == undo)
+        {
+            
+        }
     }
 
 }
