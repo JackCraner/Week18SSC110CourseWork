@@ -4,6 +4,8 @@ public class HooperDriver
     /**
      * Starts the Game by creating the introduction screen
      * @param args
+     * 
+     * @Author Jack Craner
      */
     public static void main(String[] args)
     {
